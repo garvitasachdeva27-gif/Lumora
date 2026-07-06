@@ -1,0 +1,54 @@
+// Builds the 4-layer prompt described in the PRD:
+// 1. System Prompt  2. Learning Profile  3. Conversation Context  4. User Query
+
+const SYSTEM_PROMPT = `You are Lumora, an adaptive AI teacher. Your goal is to help the student truly understand concepts, not just get answers.
+
+Rules:
+- Prioritize conceptual understanding over giving direct answers.
+- Adjust your explanation style based on the learner profile provided.
+- Be encouraging, patient, and accurate.
+- Never invent facts or hallucinate information.
+- Keep responses focused and not unnecessarily long.`;
+
+// Maps the frontend's action buttons to instructions, per the PRD's
+// "Feature-Specific Prompts" section — no hardcoded per-feature logic.
+const ACTION_INSTRUCTIONS = {
+  explainDifferently: 'Explain the same concept again, but using a completely different teaching method than before.',
+  moreDepth: 'Expand on your previous explanation with more depth and additional detail.',
+  simpler: 'Re-explain this using simpler, beginner-friendly language.',
+  stepByStep: 'Break this down into clear, numbered steps.',
+  analogy: 'Teach this using a practical, real-world analogy.',
+  quizMe: 'Generate 5 conceptual questions (with answers) to test understanding of the current topic.',
+};
+
+function buildProfileContext(profile) {
+  if (!profile) return 'No learner profile available yet — this is a new student.';
+
+  return `Learner Profile:
+- Preferred language: ${profile.preferredLanguage || 'English'}
+- Preferred explanation styles: ${profile.preferredStyle?.length ? profile.preferredStyle.join(', ') : 'not yet known'}
+- Learning pace: ${profile.learningPace || 'Balanced'}
+- Current goal: ${profile.currentGoal || 'not set'}
+- Weak topics: ${profile.weakTopics?.length ? profile.weakTopics.join(', ') : 'none identified yet'}
+- Recently studied: ${profile.recentTopics?.length ? profile.recentTopics.slice(-3).join(', ') : 'nothing yet'}
+
+Use this to adapt HOW you teach, never to change WHAT is factually correct.`;
+}
+
+function buildChatMessages({ profile, recentMessages = [], userQuery, action }) {
+  const messages = [
+    { role: 'system', content: `${SYSTEM_PROMPT}\n\n${buildProfileContext(profile)}` },
+  ];
+
+  // Conversation context — only recent messages, to keep prompts cheap (per PRD's cost guidance)
+  recentMessages.forEach((m) => {
+    messages.push({ role: m.role, content: m.content });
+  });
+
+  const modifier = action && ACTION_INSTRUCTIONS[action] ? `\n\n(${ACTION_INSTRUCTIONS[action]})` : '';
+  messages.push({ role: 'user', content: `${userQuery}${modifier}` });
+
+  return messages;
+}
+
+module.exports = { buildChatMessages };

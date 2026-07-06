@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — Lumora</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bgPrimary: '#09090B',
+            bgSurface: '#18181B',
+            bgElevated: '#27272A',
+            accentPrimary: '#6366F1',
+            accentSecondary: '#8B5CF6',
+            error: '#EF4444',
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="bg-bgPrimary min-h-screen">
+  <div class="flex h-screen">
+    <!-- Sidebar -->
+    <aside id="sidebar-root" class="w-64 shrink-0"></aside>
+
+    <!-- Main content -->
+    <main class="flex-1 overflow-y-auto p-8">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+        <!-- Left/Main column -->
+        <div class="lg:col-span-2 space-y-6">
+          <div id="welcomeCard" class="bg-bgSurface border border-white/[0.08] rounded-2xl p-6"></div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div id="continueLearningCard" class="bg-bgSurface border border-white/[0.08] rounded-2xl p-6"></div>
+            <div id="suggestedFocusCard" class="bg-bgSurface border border-white/[0.08] rounded-2xl p-6"></div>
+          </div>
+
+          <div class="bg-bgSurface border border-white/[0.08] rounded-2xl p-6">
+            <p class="text-xs text-zinc-500 uppercase tracking-wide mb-3">Recent Activity</p>
+            <div id="recentActivityCard"></div>
+          </div>
+        </div>
+
+        <!-- Right column -->
+        <div class="space-y-6">
+          <div class="bg-bgSurface border border-white/[0.08] rounded-2xl p-6 backdrop-blur">
+            <p class="text-xs text-zinc-500 uppercase tracking-wide mb-3">AI Insight</p>
+            <div id="aiInsightCard"></div>
+          </div>
+
+          <div class="bg-bgSurface border border-white/[0.08] rounded-2xl p-6">
+            <p class="text-xs text-zinc-500 uppercase tracking-wide mb-3">Weak Topics</p>
+            <div id="weakTopicsCard"></div>
+          </div>
+
+          <div class="bg-bgSurface border border-white/[0.08] rounded-2xl p-6 text-center">
+            <p class="text-xs text-zinc-500 uppercase tracking-wide mb-2">Daily Streak</p>
+            <div id="streakCard"></div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../components/sidebar.js"></script>
+  <script src="../js/dashboard.js"></script>
+</body>
+</html>

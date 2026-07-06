@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — Lumora</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bgPrimary: '#09090B',
+            bgSurface: '#18181B',
+            bgElevated: '#27272A',
+            accentPrimary: '#6366F1',
+            accentSecondary: '#8B5CF6',
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="min-h-screen flex items-center justify-center bg-bgPrimary px-4">
+  <div class="w-full max-w-md">
+    <div class="text-center mb-8">
+      <h1 class="text-2xl font-semibold text-white">Lumora</h1>
+      <p class="text-sm text-zinc-400 mt-1">Your adaptive AI teacher</p>
+    </div>
+
+    <div class="bg-bgSurface border border-white/[0.08] rounded-2xl p-8">
+      <h2 class="text-xl font-medium text-white mb-6">Welcome back</h2>
+
+      <form id="loginForm" class="space-y-4">
+        <div>
+          <label class="block text-sm text-zinc-400 mb-1.5" for="email">Email</label>
+          <input type="email" id="email" required
+            class="input-field w-full bg-bgElevated border border-white/[0.08] rounded-lg px-4 py-2.5 text-white text-sm" />
+        </div>
+        <div>
+          <label class="block text-sm text-zinc-400 mb-1.5" for="password">Password</label>
+          <input type="password" id="password" required
+            class="input-field w-full bg-bgElevated border border-white/[0.08] rounded-lg px-4 py-2.5 text-white text-sm" />
+        </div>
+        <button type="submit" id="submitBtn"
+          class="w-full gradient-accent text-white font-medium text-sm rounded-lg py-2.5 mt-2 hover:opacity-90 transition">
+          Log In
+        </button>
+      </form>
+
+      <p class="text-sm text-zinc-400 text-center mt-6">
+        Don't have an account?
+        <a href="register.html" class="text-accentPrimary hover:underline">Sign up</a>
+      </p>
+    </div>
+  </div>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script>redirectIfLoggedIn();</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+/* Design system tokens from the PRD's Color System + Typography sections */
+:root {
+  --bg-primary: #09090B;
+  --bg-surface: #18181B;
+  --bg-elevated: #27272A;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --accent-primary: #6366F1;
+  --accent-secondary: #8B5CF6;
+  --accent-highlight: #06B6D4;
+  --success: #22C55E;
+  --warning: #F59E0B;
+  --error: #EF4444;
+}
+
+body {
+  background-color: var(--bg-primary);
+  font-family: 'Inter', sans-serif;
+  color: #FAFAFA;
+}
+
+/* Subtle indigo->purple gradient, used sparingly per PRD's "Gradient Philosophy" */
+.gradient-accent {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+}
+
+/* Reusable focus ring — calm, not aggressive */
+.input-field:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+/* Toast notifications, used by utils.js */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #FAFAFA;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  z-index: 9999;
+  animation: toast-in 0.2s ease-out;
+}
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
