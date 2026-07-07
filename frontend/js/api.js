@@ -1,10 +1,8 @@
 // Centralized API communication layer — every page routes requests through this.
-// Change API_BASE_URL to your deployed Render URL when you deploy.
-// Automatically uses your local backend during development,
-// and your deployed Render backend once this is live.
+// Uses the local backend during development and the deployed Render backend in production.
 const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-  ? 'http://localhost:5000/api'
-  : 'https://YOUR-RENDER-APP-NAME.onrender.com/api';
+  ? 'https://lumora-backend-ejuy.onrender.com/api'
+  : 'https://lumora-backend-ejuy.onrender.com/api';
 async function apiRequest(endpoint, { method = 'GET', body = null, auth = true } = {}) {
   const headers = { 'Content-Type': 'application/json' };
 
