@@ -13,8 +13,9 @@ const app = express();
 app.use(cors({
   origin: [
     'http://localhost:3000',
-    process.env.FRONTEND_URL
-  ].filter(Boolean),
+    'https://lumorafrontend-chi.vercel.app'
+  ],
+  credentials: true,
 }));
 app.use(express.json());
 
