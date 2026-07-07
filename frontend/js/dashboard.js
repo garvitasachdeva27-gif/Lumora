@@ -37,11 +37,11 @@ function renderContinueLearning(profile) {
     ? `
       <p class="text-xs text-zinc-500 uppercase tracking-wide mb-2">Continue Learning</p>
       <p class="text-white font-medium">${lastTopic}</p>
-      <a href="learn.html" class="text-accentPrimary text-sm mt-3 inline-block hover:underline">Resume →</a>`
+      <a href="learn.html" class="text-accent text-sm mt-3 inline-block hover:underline">Resume →</a>`
     : `
       <p class="text-xs text-zinc-500 uppercase tracking-wide mb-2">Continue Learning</p>
       <p class="text-zinc-400 text-sm">No topics yet — start your first chat to begin.</p>
-      <a href="learn.html" class="text-accentPrimary text-sm mt-3 inline-block hover:underline">Start learning →</a>`;
+      <a href="learn.html" class="text-accent text-sm mt-3 inline-block hover:underline">Start learning →</a>`;
 }
 
 function renderSuggestedFocus(profile) {
@@ -53,7 +53,7 @@ function renderSuggestedFocus(profile) {
       <p class="text-xs text-zinc-500 uppercase tracking-wide mb-2">Suggested Focus</p>
       <p class="text-white font-medium">${weakTopic}</p>
       <p class="text-zinc-400 text-sm mt-1">Based on your recent activity.</p>
-      <a href="learn.html" class="text-accentPrimary text-sm mt-3 inline-block hover:underline">Practice this →</a>`
+      <a href="learn.html" class="text-accent text-sm mt-3 inline-block hover:underline">Practice this →</a>`
     : `
       <p class="text-xs text-zinc-500 uppercase tracking-wide mb-2">Suggested Focus</p>
       <p class="text-zinc-400 text-sm">Nothing flagged yet — keep learning and Lumora will find patterns.</p>`;
@@ -103,7 +103,7 @@ function renderWeakTopics(profile) {
 function renderStreak(progress) {
   const el = document.getElementById('streakCard');
   el.innerHTML = `
-    <p class="text-4xl font-bold text-white">${progress.studyStreak || 0}</p>
+    <p class="text-4xl font-bold font-display gold-glow pulse-number">${progress.studyStreak || 0}</p>
     <p class="text-sm text-zinc-400 mt-1">day streak</p>
     <p class="text-xs text-zinc-500 mt-3">${progress.totalStudySessions || 0} total sessions</p>`;
 }

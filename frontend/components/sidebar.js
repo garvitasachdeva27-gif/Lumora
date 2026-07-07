@@ -1,6 +1,3 @@
-// Renders the shared sidebar into any element with id="sidebar-root".
-// activePage should match one of: dashboard, learn, progress, profile, settings
-
 function renderSidebar(activePage) {
   const user = getUser();
 
@@ -18,9 +15,7 @@ function renderSidebar(activePage) {
       return `
         <a href="${item.href}"
           class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm transition
-          ${isActive
-            ? 'bg-accentPrimary/15 text-white border-l-2 border-accentPrimary'
-            : 'text-zinc-400 hover:bg-bgElevated hover:text-white'}">
+          ${isActive ? 'active-nav' : 'text-zinc-400 hover:bg-bgElevated hover:text-white'}">
           ${item.label}
         </a>`;
     })
@@ -29,9 +24,10 @@ function renderSidebar(activePage) {
   const sidebarHtml = `
     <div class="h-full flex flex-col justify-between bg-bgSurface border-r border-white/[0.08] p-4">
       <div>
-        <div class="px-2 py-3 mb-4">
-          <h1 class="text-lg font-semibold text-white">Lumora</h1>
-        </div>
+        <a href="index.html" class="flex items-center gap-2 px-2 py-3 mb-4 hover:opacity-80 transition">
+          <img src="logo.jpeg" alt="Lumora" class="w-7 h-7 rounded-lg object-cover" />
+          <h1 class="font-display text-lg font-semibold text-white">Lumora</h1>
+        </a>
         <nav class="space-y-1">${navHtml}</nav>
       </div>
       <div class="border-t border-white/[0.08] pt-4 px-2">

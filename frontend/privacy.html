@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Lumora</title>
+  <link rel="icon" type="image/jpeg" href="logo.jpeg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: {
+        bgPrimary: '#09090B', bgSurface: '#16161A', bgElevated: '#212127',
+        accentPrimary: '#6366F1', accentSecondary: '#8B5CF6', accentGold: '#D4A857',
+      } } },
+    };
+  </script>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/theme.js"></script>
+</head>
+<body class="bg-bgPrimary min-h-screen">
+  <header class="border-b border-white/[0.08] px-8 py-4 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2 hover:opacity-80 transition">
+      <img src="logo.jpeg" alt="Lumora logo" class="w-8 h-8 rounded-lg object-cover" />
+      <span class="font-display text-lg font-semibold text-white">Lumora</span>
+    </a>
+    <a href="index.html" class="text-sm text-zinc-400 hover:text-white transition">← Back to Home</a>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-8 py-16">
+    <h1 class="font-display text-3xl font-semibold text-white mb-2">Privacy Policy</h1>
+    <p class="text-sm text-zinc-500 mb-10">Last updated: July 2026</p>
+
+    <div class="card-glass rounded-2xl p-8 space-y-6 text-sm text-zinc-300 leading-relaxed">
+      <p>Lumora is a hackathon project built to demonstrate adaptive, AI-powered learning. This policy describes, in plain terms and in good faith, how your data is handled.</p>
+
+      <div>
+        <h2 class="font-display text-white font-medium mb-2">What we collect</h2>
+        <p>Your name and email address when you register; the messages you send to Lumora and the responses you receive; and information Lumora infers about how you learn (preferred language, learning pace, topics you've studied, and topics you find difficult).</p>
+      </div>
+
+      <div>
+        <h2 class="font-display text-white font-medium mb-2">How it's used</h2>
+        <p>Solely to run the product: authenticating you, generating personalized AI responses, and tracking your learning progress over time. We do not sell your data, and we do not use it for advertising.</p>
+      </div>
+
+      <div>
+        <h2 class="font-display text-white font-medium mb-2">Third-party processing</h2>
+        <p>Your messages are sent to Sarvam AI to generate teaching responses. Your password is hashed before storage — we never store or see it in plain text. All data is stored in MongoDB Atlas.</p>
+      </div>
+
+      <div>
+        <h2 class="font-display text-white font-medium mb-2">Your control over your data</h2>
+        <p>From Settings, you can export your chat history, download your learning profile, reset your learned preferences, or permanently delete your account and all associated data at any time.</p>
+      </div>
+
+      <div>
+        <h2 class="font-display text-white font-medium mb-2">Contact</h2>
+        <p>Questions about this policy can be sent to <a href="mailto:Lumora_support27@gmail.com" class="text-accent hover:underline">Lumora_support27@gmail.com</a>.</p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

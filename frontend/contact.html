@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Lumora</title>
+  <link rel="icon" type="image/jpeg" href="logo.jpeg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: {
+        bgPrimary: '#09090B', bgSurface: '#16161A', bgElevated: '#212127',
+        accentPrimary: '#6366F1', accentSecondary: '#8B5CF6', accentGold: '#D4A857',
+      } } },
+    };
+  </script>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/theme.js"></script>
+</head>
+<body class="bg-bgPrimary min-h-screen relative overflow-hidden">
+  <div class="ambient-glow w-96 h-96 bg-accentPrimary top-0 right-0"></div>
+
+  <header class="border-b border-white/[0.08] px-8 py-4 flex items-center justify-between relative z-10">
+    <a href="index.html" class="flex items-center gap-2 hover:opacity-80 transition">
+      <img src="logo.jpeg" alt="Lumora logo" class="w-8 h-8 rounded-lg object-cover" />
+      <span class="font-display text-lg font-semibold text-white">Lumora</span>
+    </a>
+    <a href="index.html" class="text-sm text-zinc-400 hover:text-white transition">← Back to Home</a>
+  </header>
+
+  <main class="max-w-2xl mx-auto px-8 py-20 relative z-10 text-center">
+    <h1 class="font-display text-3xl font-semibold text-white mb-3">Get in touch</h1>
+    <p class="text-zinc-400 mb-12">We'd love to hear from you — questions, feedback, or just curiosity about how Lumora works.</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-left">
+      <div class="card-glass card-lift rounded-2xl p-6">
+        <p class="text-2xl mb-3">💬</p>
+        <p class="text-white font-medium mb-1">General Support</p>
+        <p class="text-zinc-400 text-sm mb-4">Questions, bugs, or trouble using Lumora.</p>
+        <a href="mailto:Lumora_support27@gmail.com" class="text-accent text-sm hover:underline break-all">Lumora_support27@gmail.com</a>
+      </div>
+      <div class="card-glass card-lift rounded-2xl p-6">
+        <p class="text-2xl mb-3">✉️</p>
+        <p class="text-white font-medium mb-1">General Inquiries</p>
+        <p class="text-zinc-400 text-sm mb-4">Partnerships, feedback, or anything else.</p>
+        <a href="mailto:Lumora27@gmail.com" class="text-accent text-sm hover:underline break-all">Lumora27@gmail.com</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

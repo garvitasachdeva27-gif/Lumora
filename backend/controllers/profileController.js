@@ -45,5 +45,34 @@ const updateProfile = async (req, res, next) => {
     next(error);
   }
 };
+// @route POST /api/profile/reset
+// Clears all AI-learned data, keeping the profile document but resetting it to defaults
+const resetProfile = async (req, res, next) => {
+  try {
+    const profile = await LearningProfile.findOneAndUpdate(
+      { userId: req.user._id },
+      {
+        $set: {
+          preferredLanguage: 'English',
+          preferredStyle: [],
+          learningPace: 'Balanced',
+          currentGoal: '',
+          weakTopics: [],
+          recentTopics: [],
+          aiInsights: [],
+        },
+      },
+      { new: true }
+    );
 
-module.exports = { getProfile, updateProfile };
+    if (!profile) {
+      return res.status(404).json({ success: false, message: 'Learning profile not found' });
+    }
+
+    res.status(200).json({ success: true, profile });
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { getProfile, updateProfile, resetProfile };

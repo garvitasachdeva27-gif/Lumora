@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learning Profile — Lumora</title>
+  <link rel="icon" type="image/jpeg" href="logo.jpeg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bgPrimary: '#09090B', bgSurface: '#16161A', bgElevated: '#212127',
+            accentPrimary: '#6366F1', accentSecondary: '#8B5CF6', accentGold: '#D4A857', error: '#EF4444',
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/theme.js"></script>
+</head>
+<body class="bg-bgPrimary min-h-screen">
+  <div class="flex h-screen">
+    <aside id="sidebar-root" class="w-64 shrink-0"></aside>
+
+    <main class="flex-1 overflow-y-auto p-8 relative">
+      <div class="ambient-glow w-80 h-80 bg-accentPrimary -top-16 right-1/4"></div>
+
+      <form id="profileForm" class="max-w-3xl mx-auto space-y-6 relative z-10" data-stagger="1">
+        <div class="reveal flex items-center justify-between">
+          <h1 class="font-display text-2xl font-semibold text-white">Learning Profile</h1>
+          <button type="submit" id="saveBtn"
+            class="btn-shimmer gradient-accent text-white text-sm font-medium px-5 py-2.5 rounded-lg hover:opacity-90 transition">
+            Save Changes
+          </button>
+        </div>
+
+        <div class="reveal card-glass rounded-2xl p-6">
+          <p class="text-xs text-zinc-500 uppercase tracking-wide mb-3">Learning Preferences</p>
+          <div id="styleChips" class="flex flex-wrap gap-2"></div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div class="reveal card-glass card-lift rounded-2xl p-6">
+            <label class="block text-xs text-zinc-500 uppercase tracking-wide mb-3">Language</label>
+            <select id="languageSelect"
+              class="w-full bg-bgElevated border border-white/[0.08] rounded-lg px-4 py-2.5 text-white text-sm">
+              <option value="English">English</option>
+              <option value="Hindi">Hindi</option>
+              <option value="Hinglish">Hinglish</option>
+            </select>
+          </div>
+          <div class="reveal card-glass card-lift rounded-2xl p-6">
+            <label class="block text-xs text-zinc-500 uppercase tracking-wide mb-3">Learning Pace</label>
+            <select id="paceSelect"
+              class="w-full bg-bgElevated border border-white/[0.08] rounded-lg px-4 py-2.5 text-white text-sm">
+              <option value="Slow">Slow</option>
+              <option value="Balanced">Balanced</option>
+              <option value="Fast">Fast</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="reveal card-glass rounded-2xl p-6">
+          <label class="block text-xs text-zinc-500 uppercase tracking-wide mb-3">Current Goal</label>
+          <input id="goalInput" type="text" placeholder="e.g. Master DSA, Prepare for placements..."
+            class="input-field w-full bg-bgElevated border border-white/[0.08] rounded-lg px-4 py-2.5 text-white text-sm" />
+        </div>
+
+        <div class="reveal card-glass rounded-2xl p-6">
+          <p class="text-xs text-zinc-500 uppercase tracking-wide mb-3">AI Observations</p>
+          <div id="observationsList"></div>
+        </div>
+
+        <div class="reveal card-glass rounded-2xl p-6 flex items-center justify-between border-error/30">
+          <div>
+            <p class="text-sm text-white font-medium">Reset Learning Profile</p>
+            <p class="text-xs text-zinc-500 mt-1">Clears all AI-learned preferences and observations.</p>
+          </div>
+          <button type="button" id="resetBtn"
+            class="text-sm border border-error/50 text-error px-4 py-2 rounded-lg hover:bg-error/10 transition">
+            Reset
+          </button>
+        </div>
+      </form>
+    </main>
+  </div>
+
+  <script src="js/utils.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="components/sidebar.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>

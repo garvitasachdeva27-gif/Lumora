@@ -22,6 +22,7 @@ app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api', require('./routes/chatRoutes'));
 app.use('/api', require('./routes/profileRoutes'));
 app.use('/api', require('./routes/progressRoutes'));
+app.use('/api', require('./routes/userRoutes'));
 
 app.use(errorHandler);
 

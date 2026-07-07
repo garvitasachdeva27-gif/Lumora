@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lumora — Learn Your Way</title>
+  <link rel="icon" type="image/jpeg" href="logo.jpeg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bgPrimary: '#09090B', bgSurface: '#16161A', bgElevated: '#212127',
+            accentPrimary: '#6366F1', accentSecondary: '#8B5CF6', accentGold: '#D4A857',
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/theme.js"></script>
+</head>
+<body class="bg-bgPrimary min-h-screen overflow-x-hidden">
+
+  <header class="border-b border-white/[0.08] px-8 py-4 flex items-center justify-between relative z-10">
+    <a href="index.html" class="flex items-center gap-2 hover:opacity-80 transition">
+      <img src="logo.jpeg" alt="Lumora logo" class="w-8 h-8 rounded-lg object-cover" />
+      <span class="font-display text-lg font-semibold text-white">Lumora</span>
+    </a>
+    <nav class="hidden md:flex gap-8 text-sm text-zinc-400">
+      <a href="#home" class="hover:text-white transition">Home</a>
+      <a href="#features" class="hover:text-white transition">Features</a>
+      <a href="#about" class="hover:text-white transition">About</a>
+      <a href="contact.html" class="hover:text-white transition">Contact</a>
+    </nav>
+    <a href="register.html" class="btn-shimmer gradient-accent text-white text-sm font-medium px-5 py-2 rounded-lg hover:opacity-90 transition">
+      Start Learning
+    </a>
+  </header>
+
+  <section id="home" class="relative px-8 py-32 text-center overflow-hidden">
+    <div class="ambient-glow w-96 h-96 bg-accentPrimary top-0 left-0"></div>
+    <div class="ambient-glow w-96 h-96 bg-accentSecondary bottom-0 right-0" style="animation-delay: -6s;"></div>
+    <div class="relative z-10 max-w-3xl mx-auto reveal">
+      <h2 class="font-display text-5xl md:text-6xl font-bold text-white leading-tight">
+        Learn your <span class="gold-glow">way.</span>
+      </h2>
+      <p class="text-zinc-400 text-lg mt-6 leading-relaxed max-w-xl mx-auto">
+        Lumora is an AI teacher that continuously understands how you learn and adapts every lesson to fit you — not the other way around.
+      </p>
+      <div class="flex items-center justify-center gap-4 mt-9">
+        <a href="register.html" class="btn-shimmer gradient-accent text-white font-medium px-7 py-3 rounded-lg hover:opacity-90 transition">
+          Start Learning
+        </a>
+        <a href="#features" class="text-zinc-300 font-medium px-7 py-3 rounded-lg border border-white/[0.1] hover:bg-bgElevated transition">
+          Learn More
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="px-8 py-20 max-w-6xl mx-auto">
+    <h3 class="font-display text-3xl font-semibold text-white text-center mb-14 reveal">Why Lumora feels different</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-stagger="1">
+      <div class="reveal card-glass card-lift rounded-2xl p-6">
+        <p class="text-2xl mb-3">🧠</p>
+        <p class="text-white font-medium mb-1">Adaptive Teaching</p>
+        <p class="text-zinc-400 text-sm">Every explanation adjusts to how you personally learn best.</p>
+      </div>
+      <div class="reveal card-glass card-lift rounded-2xl p-6">
+        <p class="text-2xl mb-3">📊</p>
+        <p class="text-white font-medium mb-1">Personalized Learning Profile</p>
+        <p class="text-zinc-400 text-sm">Lumora remembers your style, pace, and goals over time.</p>
+      </div>
+      <div class="reveal card-glass card-lift rounded-2xl p-6">
+        <p class="text-2xl mb-3">📝</p>
+        <p class="text-white font-medium mb-1">AI Quiz Generation</p>
+        <p class="text-zinc-400 text-sm">Test your understanding with questions built for your level.</p>
+      </div>
+      <div class="reveal card-glass card-lift rounded-2xl p-6">
+        <p class="text-2xl mb-3">🌍</p>
+        <p class="text-white font-medium mb-1">Multilingual Learning</p>
+        <p class="text-zinc-400 text-sm">Learn in English, Hindi, or Hinglish — whatever's comfortable.</p>
+      </div>
+      <div class="reveal card-glass card-lift rounded-2xl p-6">
+        <p class="text-2xl mb-3">📈</p>
+        <p class="text-white font-medium mb-1">Progress Tracking</p>
+        <p class="text-zinc-400 text-sm">See your streaks, sessions, and growth at a glance.</p>
+      </div>
+      <div class="reveal card-glass card-lift rounded-2xl p-6">
+        <p class="text-2xl mb-3">💬</p>
+        <p class="text-white font-medium mb-1">Natural AI Conversations</p>
+        <p class="text-zinc-400 text-sm">Ask anything, anytime — no rigid course structure.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-8 py-20 max-w-4xl mx-auto text-center">
+    <h3 class="font-display text-3xl font-semibold text-white mb-14 reveal">How it works</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8" data-stagger="1">
+      <div class="reveal">
+        <div class="w-10 h-10 rounded-full gradient-accent text-white flex items-center justify-center mx-auto mb-4 font-semibold font-display">1</div>
+        <p class="text-white font-medium mb-1">Ask anything</p>
+        <p class="text-zinc-400 text-sm">Start a conversation about anything you want to learn.</p>
+      </div>
+      <div class="reveal">
+        <div class="w-10 h-10 rounded-full gradient-accent text-white flex items-center justify-center mx-auto mb-4 font-semibold font-display">2</div>
+        <p class="text-white font-medium mb-1">Learn with AI</p>
+        <p class="text-zinc-400 text-sm">Get explanations shaped around how you actually understand.</p>
+      </div>
+      <div class="reveal">
+        <div class="w-10 h-10 rounded-full gradient-accent text-white flex items-center justify-center mx-auto mb-4 font-semibold font-display">3</div>
+        <p class="text-white font-medium mb-1">AI improves future lessons</p>
+        <p class="text-zinc-400 text-sm">Every session teaches Lumora more about how you learn.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="px-8 py-20 max-w-4xl mx-auto text-center reveal">
+    <h3 class="font-display text-3xl font-semibold text-white mb-6">Why Lumora</h3>
+    <div class="flex flex-wrap justify-center gap-3">
+      <span class="card-glass text-zinc-300 text-sm px-4 py-2 rounded-full">Personalized learning</span>
+      <span class="card-glass text-zinc-300 text-sm px-4 py-2 rounded-full">Continuous adaptation</span>
+      <span class="card-glass text-zinc-300 text-sm px-4 py-2 rounded-full">AI-powered teaching</span>
+      <span class="card-glass text-zinc-300 text-sm px-4 py-2 rounded-full">Modern learning experience</span>
+    </div>
+  </section>
+
+  <footer class="border-t border-white/[0.08] px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-zinc-500">
+    <p>Lumora © 2026</p>
+    <div class="flex gap-6">
+      <a href="privacy.html" class="hover:text-white transition">Privacy Policy</a>
+      <a href="terms.html" class="hover:text-white transition">Terms</a>
+      <a href="contact.html" class="hover:text-white transition">Contact</a>
+    </div>
+  </footer>
+
+  <script src="js/animations.js"></script>
+</body>
+</html>

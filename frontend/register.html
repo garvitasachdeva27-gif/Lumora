@@ -4,35 +4,38 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sign Up — Lumora</title>
+  <link rel="icon" type="image/jpeg" href="logo.jpeg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            bgPrimary: '#09090B',
-            bgSurface: '#18181B',
-            bgElevated: '#27272A',
-            accentPrimary: '#6366F1',
-            accentSecondary: '#8B5CF6',
+            bgPrimary: '#09090B', bgSurface: '#16161A', bgElevated: '#212127',
+            accentPrimary: '#6366F1', accentSecondary: '#8B5CF6', accentGold: '#D4A857',
           },
         },
       },
     };
   </script>
-  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/theme.js"></script>
 </head>
-<body class="min-h-screen flex items-center justify-center bg-bgPrimary px-4">
-  <div class="w-full max-w-md">
-    <div class="text-center mb-8">
-      <h1 class="text-2xl font-semibold text-white">Lumora</h1>
-      <p class="text-sm text-zinc-400 mt-1">Your adaptive AI teacher</p>
-    </div>
+<body class="min-h-screen flex items-center justify-center bg-bgPrimary px-4 relative overflow-hidden">
+  <div class="ambient-glow w-96 h-96 bg-accentPrimary top-0 right-0"></div>
+  <div class="ambient-glow w-96 h-96 bg-accentSecondary bottom-0 left-0" style="animation-delay: -6s;"></div>
 
-    <div class="bg-bgSurface border border-white/[0.08] rounded-2xl p-8">
-      <h2 class="text-xl font-medium text-white mb-6">Create your account</h2>
+  <div class="w-full max-w-md reveal relative z-10">
+    <a href="index.html" class="flex flex-col items-center gap-2 mb-8 hover:opacity-80 transition">
+      <img src="logo.jpeg" alt="Lumora logo" class="w-10 h-10 rounded-lg object-cover" />
+      <h1 class="font-display text-2xl font-semibold text-white">Lumora</h1>
+      <p class="text-sm text-zinc-400">Your adaptive AI teacher</p>
+    </a>
+
+    <div class="card-glass rounded-2xl p-8">
+      <h2 class="font-display text-xl font-medium text-white mb-6">Create your account</h2>
 
       <form id="registerForm" class="space-y-4">
         <div>
@@ -52,21 +55,22 @@
           <p class="text-xs text-zinc-500 mt-1">At least 6 characters</p>
         </div>
         <button type="submit" id="submitBtn"
-          class="w-full gradient-accent text-white font-medium text-sm rounded-lg py-2.5 mt-2 hover:opacity-90 transition">
+          class="btn-shimmer w-full gradient-accent text-white font-medium text-sm rounded-lg py-2.5 mt-2 hover:opacity-90 transition">
           Create Account
         </button>
       </form>
 
       <p class="text-sm text-zinc-400 text-center mt-6">
         Already have an account?
-        <a href="login.html" class="text-accentPrimary hover:underline">Log in</a>
+        <a href="login.html" class="text-accent hover:underline">Log in</a>
       </p>
     </div>
   </div>
 
-  <script src="../js/utils.js"></script>
-  <script src="../js/api.js"></script>
-  <script src="../js/auth.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/animations.js"></script>
   <script>redirectIfLoggedIn();</script>
 </body>
 </html>

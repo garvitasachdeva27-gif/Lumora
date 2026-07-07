@@ -10,16 +10,22 @@ Rules:
 - Never invent facts or hallucinate information.
 - Keep responses focused and not unnecessarily long.`;
 
-// Maps the frontend's action buttons to instructions, per the PRD's
-// "Feature-Specific Prompts" section — no hardcoded per-feature logic.
-const ACTION_INSTRUCTIONS = {
-  explainDifferently: 'Explain the same concept again, but using a completely different teaching method than before.',
-  moreDepth: 'Expand on your previous explanation with more depth and additional detail.',
-  simpler: 'Re-explain this using simpler, beginner-friendly language.',
-  stepByStep: 'Break this down into clear, numbered steps.',
-  analogy: 'Teach this using a practical, real-world analogy.',
-  quizMe: 'Generate 5 conceptual questions (with answers) to test understanding of the current topic.',
-};
+// Maps the frontend's 9 action buttons (PRD "AI Response Actions") to instructions.
+// Keys must match the data-action values used in learn.html / chat.js exactly.
+function getActionInstruction(action, profile) {
+  const instructions = {
+    explainDifferently: 'Explain the same concept again, but using a completely different teaching method than before.',
+    moreDepth: 'Expand on your previous explanation with more depth and additional detail.',
+    simpler: 'Re-explain this using simpler, beginner-friendly language.',
+    examples: 'Re-explain this by giving several concrete, practical examples.',
+    stepByStep: 'Break this down into clear, numbered steps.',
+    visual: 'Explain this with a strong visual/spatial description — use structured text or a simple text-based diagram, since no images can be rendered.',
+    quizMe: 'Generate 5 conceptual questions (with answers provided separately below them) to test understanding of the current topic.',
+    analogy: 'Teach this using a practical, real-world analogy.',
+    translate: `Translate your previous response into ${profile?.preferredLanguage && profile.preferredLanguage !== 'English' ? profile.preferredLanguage : 'Hindi'}, keeping the meaning and technical accuracy intact.`,
+  };
+  return instructions[action] || '';
+}
 
 function buildProfileContext(profile) {
   if (!profile) return 'No learner profile available yet — this is a new student.';
@@ -40,12 +46,11 @@ function buildChatMessages({ profile, recentMessages = [], userQuery, action }) 
     { role: 'system', content: `${SYSTEM_PROMPT}\n\n${buildProfileContext(profile)}` },
   ];
 
-  // Conversation context — only recent messages, to keep prompts cheap (per PRD's cost guidance)
   recentMessages.forEach((m) => {
     messages.push({ role: m.role, content: m.content });
   });
 
-  const modifier = action && ACTION_INSTRUCTIONS[action] ? `\n\n(${ACTION_INSTRUCTIONS[action]})` : '';
+  const modifier = action ? `\n\n(${getActionInstruction(action, profile)})` : '';
   messages.push({ role: 'user', content: `${userQuery}${modifier}` });
 
   return messages;

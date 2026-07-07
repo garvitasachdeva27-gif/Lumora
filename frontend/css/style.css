@@ -1,12 +1,13 @@
-/* Design system tokens from the PRD's Color System + Typography sections */
 :root {
   --bg-primary: #09090B;
-  --bg-surface: #18181B;
-  --bg-elevated: #27272A;
+  --bg-surface: #16161A;
+  --bg-elevated: #212127;
   --border-subtle: rgba(255, 255, 255, 0.08);
-  --accent-primary: #6366F1;
-  --accent-secondary: #8B5CF6;
-  --accent-highlight: #06B6D4;
+  --accent-primary-rgb: 99, 102, 241;
+  --accent-secondary-rgb: 139, 92, 246;
+  --accent-primary: rgb(99, 102, 241);
+  --accent-secondary: rgb(139, 92, 246);
+  --accent-gold: #D4A857;
   --success: #22C55E;
   --warning: #F59E0B;
   --error: #EF4444;
@@ -18,19 +19,143 @@ body {
   color: #FAFAFA;
 }
 
-/* Subtle indigo->purple gradient, used sparingly per PRD's "Gradient Philosophy" */
+.font-display {
+  font-family: 'Sora', sans-serif;
+}
+
 .gradient-accent {
   background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
 }
 
-/* Reusable focus ring — calm, not aggressive */
+.text-accent {
+  color: var(--accent-primary);
+}
+
+.border-accent {
+  border-color: var(--accent-primary);
+}
+
+.bg-accent-soft {
+  background: rgba(var(--accent-primary-rgb), 0.15);
+  color: var(--accent-primary);
+}
+
+.gold-glow {
+  color: var(--accent-gold);
+  text-shadow: 0 0 24px rgba(212, 168, 87, 0.35);
+}
+
+.card-glass {
+  background: rgba(22, 22, 26, 0.72);
+  border: 1px solid var(--border-subtle);
+  backdrop-filter: blur(14px);
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+.card-glass:hover {
+  border-color: rgba(var(--accent-primary-rgb), 0.35);
+}
+.card-lift:hover {
+  transform: translateY(-2px);
+}
+
+.active-nav {
+  background: rgba(var(--accent-primary-rgb), 0.15);
+  border-left: 2px solid var(--accent-primary);
+  color: #fff;
+}
+
+.chip-active {
+  background: rgba(var(--accent-primary-rgb), 0.15);
+  border-color: var(--accent-primary);
+  color: #fff;
+}
+
+.input-field {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
 .input-field:focus {
   outline: none;
   border-color: var(--accent-primary);
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+  box-shadow: 0 0 0 3px rgba(var(--accent-primary-rgb), 0.15);
 }
 
-/* Toast notifications, used by utils.js */
+/* Toggle switch — driven by CSS var, not a static Tailwind color */
+.toggle-input:checked ~ .toggle-track {
+  background: var(--accent-primary);
+}
+.toggle-input:checked ~ .toggle-thumb {
+  transform: translateX(20px);
+}
+.toggle-track, .toggle-thumb {
+  transition: all 0.2s ease;
+}
+
+.ambient-glow {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.28;
+  pointer-events: none;
+  animation: drift 14s ease-in-out infinite;
+}
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(20px, -30px) scale(1.08); }
+}
+
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -60%;
+  width: 40%; height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.25), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+}
+.btn-shimmer:hover::after {
+  left: 130%;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.msg-in {
+  animation: msgIn 0.35s ease-out;
+}
+@keyframes msgIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.typing-dots {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px 0;
+}
+.typing-dots span {
+  width: 6px; height: 6px;
+  border-radius: 9999px;
+  background: var(--accent-primary);
+  animation: typingBounce 1.2s infinite ease-in-out;
+}
+.typing-dots span:nth-child(2) { animation-delay: 0.15s; }
+.typing-dots span:nth-child(3) { animation-delay: 0.3s; }
+@keyframes typingBounce {
+  0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+  40% { transform: translateY(-4px); opacity: 1; }
+}
+
 .toast {
   position: fixed;
   bottom: 24px;
@@ -39,11 +164,25 @@ body {
   border-radius: 10px;
   font-size: 14px;
   color: #FAFAFA;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
   z-index: 9999;
-  animation: toast-in 0.2s ease-out;
+  animation: toast-in 0.25s ease-out;
 }
 @keyframes toast-in {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(10px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.pulse-number {
+  animation: pulse-soft 2.4s ease-in-out infinite;
+}
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient-glow, .pulse-number, .reveal, .msg-in, .typing-dots span {
+    animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important;
+  }
 }
