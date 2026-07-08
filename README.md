@@ -4,6 +4,8 @@ Lumora is an AI powered adaptive learning platform designed to personalize the l
 
 The platform combines conversational AI with learner profiling, progress tracking, and personalized recommendations to create a more engaging and effective learning experience.
 
+Live demo at: https://lumorafrontend-chi.vercel.app/
+
 ## Features
 
 - Personalized AI tutoring
