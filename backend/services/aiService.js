@@ -1,6 +1,6 @@
 const sarvamClient = require('../config/sarvam');
 
-const MODEL = 'sarvam-30b'; // balanced cost/quality — see note below
+const MODEL = 'sarvam-105b'; // balanced cost/quality — see note below
 
 // MOCK MODE: set MOCK_AI=true in .env to test the whole app without
 // spending Sarvam credits. Flip it off when you're ready for real responses.
